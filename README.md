@@ -1,70 +1,86 @@
-# Getting Started with Create React App
+# 📝 TO-DO List Simples
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![Status](https://img.shields.io/badge/status-funcionando-brightgreen) ![React](https://img.shields.io/badge/React-18.2.0-61DAFB) ![License](https://img.shields.io/badge/license-MIT-0078D4)
 
-## Available Scripts
+Uma aplicação de lista de tarefas simples, intuitiva e eficiente construída com React. Gerencie suas tarefas do dia a dia de forma prática e organizada.
 
-In the project directory, you can run:
+## ✨ Recursos
+- ✅ Adicionar tarefas rapidamente
+- 🎯 Marcar/desmarcar como concluído com um clique
+- ✏️ Editar tarefas com duplo clique
+- 🗑️ Excluir tarefas facilmente
+- 💾 Persistência com LocalStorage (dados salvos no navegador)
+- 📱 Design responsivo
+- 🎨 Interface limpa e focada na usabilidade
+- 📊 Contadores de tarefas criadas e concluídas
 
-### `npm start`
+## 📷 Preview
+(Adicione aqui uma imagem ou GIF do app, se desejar)
+```
+![Preview](./path/to/screenshot.png)
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 🚀 Como usar
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+1. Adicionar Tarefa
+    - Digite a tarefa no campo de texto
+    - Clique em "Adicionar" ou pressione Enter
 
-### `npm test`
+2. Gerenciar Tarefas
+    - ✅ Clique na checkbox para marcar/desmarcar como concluído
+    - ✏️ Dê duplo clique no texto para editar
+    - 🗑️ Clique no "×" para excluir
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+3. Acompanhar Progresso
+    - 📊 Veja o contador de tarefas criadas e concluídas no topo/rodapé da lista
 
-### `npm run build`
+## 🛠️ Tecnologias
+- React 18.2.0
+- HTML5 & CSS3
+- LocalStorage API
+- Hooks: useState, useEffect, useRef
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 📦 Instalação e execução
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Clone o repositório e execute:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```bash
+# Clone o repositório
+git clone https://github.com/seu-usuario/todo-simple.git
 
-### `npm run eject`
+# Entre no diretório
+cd todo-simple
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+# Instale as dependências
+npm install
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+# Execute em modo desenvolvimento
+npm start
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+A aplicação estará disponível em: http://localhost:3000
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## 💡 Dicas
+- Os dados são armazenados localmente no navegador; para resetar, limpe o LocalStorage do site.
+- Para produção, configure um build com `npm run build` e hospede os arquivos estáticos.
 
-## Learn More
+## 🧩 Estrutura sugerida
+- src/
+  - components/ (TodoItem, TodoList, Header, etc.)
+  - hooks/
+  - styles/
+  - App.jsx
+  - index.jsx
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## 🤝 Contribuições
+Contribuições são bem-vindas. Abra issues para bugs ou features e envie PRs com descrições claras das mudanças.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## 📄 Licença
+MIT — consulte o arquivo LICENSE para mais detalhes.
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## 👨‍💻 Autor
+Fabio Ramos
 
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+GitHub: @fabioramos-02
+LinkedIn: [Fabio Ramos](https://www.linkedin.com/in/fabio-ramos-7b8608204/)
