@@ -1,31 +1,66 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
+
+const STORAGE_KEY = 'todos';
 
 export const useTodos = () => {
   const [todos, setTodos] = useState([]);
+  const [isLoaded, setIsLoaded] = useState(false);
+  const hasLoaded = useRef(false); // 🔥 Novo: controlar se já carregou
 
-  // Carregar tarefas do localStorage ao iniciar
+  // Carregar uma vez quando o componente montar
   useEffect(() => {
-    const savedTodos = localStorage.getItem('todos');
-    if (savedTodos) {
-      setTodos(JSON.parse(savedTodos));
-    }
+    // 🔥 Prevenir múltiplas execuções no Strict Mode
+    if (hasLoaded.current) return;
+    
+    const loadTodos = () => {
+      try {
+        const savedTodos = localStorage.getItem(STORAGE_KEY);
+        console.log('📥 Tentando carregar do localStorage:', savedTodos);
+        
+        if (savedTodos && savedTodos !== 'undefined' && savedTodos !== 'null') {
+          const parsedTodos = JSON.parse(savedTodos);
+          if (Array.isArray(parsedTodos)) {
+            setTodos(parsedTodos);
+            console.log('✅ Tarefas carregadas:', parsedTodos.length);
+          }
+        }
+      } catch (error) {
+        console.error('❌ Erro ao carregar tarefas:', error);
+        setTodos([]);
+      } finally {
+        setIsLoaded(true);
+        hasLoaded.current = true; // 🔥 Marcar como carregado
+      }
+    };
+
+    loadTodos();
   }, []);
 
-  // Salvar tarefas no localStorage sempre que mudar
+  // Salvar sempre que todos mudarem
   useEffect(() => {
-    localStorage.setItem('todos', JSON.stringify(todos));
-  }, [todos]);
+    if (isLoaded) {
+      console.log('💾 Salvando no localStorage:', todos);
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(todos));
+        console.log('✅ Tarefas salvas com sucesso');
+      } catch (error) {
+        console.error('❌ Erro ao salvar tarefas:', error);
+      }
+    }
+  }, [todos, isLoaded]);
 
   const addTodo = (title) => {
-    if (title.trim()) {
+    if (title && title.trim()) {
       const newTodo = {
-        id: Date.now(),
+        id: Date.now() + Math.random(),
         title: title.trim(),
         completed: false,
         createdAt: new Date().toISOString()
       };
       setTodos(prev => [newTodo, ...prev]);
+      return true;
     }
+    return false;
   };
 
   const toggleTodo = (id) => {
@@ -41,17 +76,15 @@ export const useTodos = () => {
   };
 
   const updateTodo = (id, newTitle) => {
-    if (newTitle.trim()) {
+    if (newTitle && newTitle.trim()) {
       setTodos(prev =>
         prev.map(todo =>
           todo.id === id ? { ...todo, title: newTitle.trim() } : todo
         )
       );
+      return true;
     }
-  };
-
-  const clearCompleted = () => {
-    setTodos(prev => prev.filter(todo => !todo.completed));
+    return false;
   };
 
   return {
@@ -60,6 +93,6 @@ export const useTodos = () => {
     toggleTodo,
     deleteTodo,
     updateTodo,
-    clearCompleted
+    isLoaded
   };
 };

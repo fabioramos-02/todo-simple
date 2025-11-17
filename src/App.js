@@ -1,23 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import TodoForm from "./components/TodoForm";
+import TodoList from "./components/TodoList";
+import { useTodos } from "./hooks/useTodos";
+import "./App.css";
 
 function App() {
+  const { todos, addTodo, toggleTodo, deleteTodo, updateTodo } = useTodos();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <div className="app">
+      <header className="app-header">
+        <h1>📝 TO-DO List</h1>
+        <p>Simples e objetivo</p>
       </header>
+
+      <main className="app-main">
+        <TodoForm onAdd={addTodo} />
+
+        <TodoList
+          todos={todos}
+          onToggle={toggleTodo}
+          onDelete={deleteTodo}
+          onUpdate={updateTodo}
+        />
+      </main>
+
+      <footer className="app-footer">
+        <p>💡 Dica: Clique duas vezes em uma tarefa para editá-la</p>
+      </footer>
     </div>
   );
 }
